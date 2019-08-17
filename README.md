@@ -1,2 +1,2 @@
 # python-utils
-All my own tools written in pythion
+All my own tools written in python
