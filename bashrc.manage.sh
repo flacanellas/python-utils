@@ -14,13 +14,29 @@
 #################################################
 
 #################################################
+# Check variables
+function _pyu_check_vars {
+    if [[ -z "$py_utils" ]]
+    then
+       echo "[ERROR] 'py_utils' var not defined!"
+       return 0
+    else
+       return 1
+    fi    
+}
 # Copy files to this local directory 
 function _pyu_add {
-    for argv in "$@"
-    do
-        [[ -e "$argv" ]] && [[ ! -e "$py_utils/$argv" ]] && \
-	cp -fr "$argv" "$py_utils/$argv"
-    done
+    # check variables
+    _pyu_check_vars
+    
+    if [[ $? -eq 1 ]]
+    then
+        for argv in "$@"
+        do
+            [[ -e "$argv" ]] && [[ ! -e "$py_utils/$argv" ]] && \
+	    cp -fr "$argv" "$py_utils/$argv"
+        done
+    fi
 }
 alias py-utils:add='_pyu_add'
 
@@ -28,26 +44,34 @@ alias py-utils:add='_pyu_add'
 # $1 Commit message
 # $2+ Files to push
 function _pyu_push {
-    commit_msg="$1"
-    shift
-
-    while (( "$#" ))
-    do
-	_pyu_add "$1"
-	pushd "$py_utils" > /dev/null
-
-	[[ ! -n $(git status -s "$1" | grep "[AM]") ]] && \
-	git add "$1"
-	popd > /dev/null
-        shift
-    done
+    # check variables
+    _pyu_check_vars
     
-    pushd "$py_utils" > /dev/null
-    if [[ -n $(git status -s | grep "[AM]") ]]
+    if [[ $? -eq 1 ]]
     then
-        git commit -m "${commit_msg}" && git push && popd > /dev/null
-    else
-        popd > /dev/null
+        commit_msg="$1"
+        shift
+
+        while (( "$#" ))
+        do
+	    _pyu_add "$1"
+	    pushd "$py_utils" > /dev/null
+
+	    [[ ! -n $(git status -s "$1" | grep "[AM]") ]] && \
+	    git add "$1"
+	    popd > /dev/null
+            shift
+        done
+    
+        pushd "$py_utils" > /dev/null
+        if [[ -n $(git status -s | grep "[AM]") ]]
+        then
+            git commit -m "${commit_msg}" && \
+            git push && popd > /dev/null
+        else
+            popd > /dev/null
+        fi
     fi
 }
+alias py-utils:push='_pyu_push'
 #################################################
