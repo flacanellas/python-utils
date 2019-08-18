@@ -6,7 +6,7 @@
 
 # HOW TO USE:
 #################################################
-# 1) Add the following variables
+# 1) Add the following variables on .bashrc
 # py_utils="/some-path/this-repo-folder" 
 #################################################
 # 2) Adds the follogin lines on .bashrc
