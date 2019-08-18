@@ -4,8 +4,14 @@
 # Date: 17-08-2019
 # Version: 0.1
 
-# VARIABLES AT PARENT BASH FILE
-# $py_utils Path to this directory
+# HOW TO USE:
+#################################################
+# 1) Add the following variables
+# py_utils="/some-path/this-repo-folder" 
+#################################################
+# 2) Adds the follogin lines on .bashrc
+# . /path/bashrc.manage.sh
+#################################################
 
 #################################################
 # Copy files to this local directory 
