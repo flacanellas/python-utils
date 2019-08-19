@@ -6,7 +6,7 @@
 
 # HOW TO USE:
 #################################################
-# 1) Add the following variables on .bashrc
+# 1) Add the following variables
 # py_utils="/some-path/this-repo-folder" 
 #################################################
 # 2) Adds the follogin lines on .bashrc
@@ -68,6 +68,7 @@ function _pyu_push {
             git commit -m "${commit_msg}" && \
             git push && popd > /dev/null \
         else
+            git push
             popd > /dev/null
         fi
     fi
