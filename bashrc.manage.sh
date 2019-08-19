@@ -68,7 +68,6 @@ function _pyu_push {
             git commit -m "${commit_msg}" && \
             git push && popd > /dev/null \
         else
-            git push
             popd > /dev/null
         fi
     fi
