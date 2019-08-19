@@ -57,7 +57,6 @@ function _pyu_push {
 	    _pyu_add "$1"
 	    pushd "$py_utils" > /dev/null
 
-	    [[ ! -n $(git status -s "$1" | grep "[AM]") ]] && \
 	    git add "$1"
 	    popd > /dev/null
             shift
@@ -67,7 +66,7 @@ function _pyu_push {
         if [[ -n $(git status -s | grep "[AM]") ]]
         then
             git commit -m "${commit_msg}" && \
-            git push && popd > /dev/null
+            git push && popd > /dev/null \
         else
             popd > /dev/null
         fi
