@@ -4,7 +4,7 @@
 # Version: 0.1
 # Purpose: Utilities for work with os.argv
 
-from console import error
+from .console import error
 from sys import argv
 
 def mqty(min):
@@ -14,12 +14,20 @@ def mqty(min):
     
     return len(argv) >= min
 
-def get(key, separator=':'):
-    """Get an argument value --argument:value"""
+def get(key, separator=' '):
+    """Get an argument value
+
+    Formats: ARGUMENT SEPARATOR VALUE
+    - argument value
+    - argument:value
+    """
 
     if key != '':
         for item in argv:
-            if key in item and test_format(item, separator):
+            if separator == ' ' and key in item:
+                index = argv.index(key)
+                return argv[index + 1]
+            elif key in item and test_format(item, separator):
                 return item.split(separator)[1]
     
     return None
