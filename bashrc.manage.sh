@@ -33,7 +33,7 @@ function _pyu_add {
     then
         for argv in "$@"
         do
-            [[ -e "$argv" ]] && [[ ! -e "$py_utils/$argv" ]] && \
+            [[ -e "$argv" ]] && \
 	    cp -fr "$argv" "$py_utils/$argv"
         done
     fi
