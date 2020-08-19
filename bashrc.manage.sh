@@ -1,6 +1,6 @@
 # Python Utilities repo
-# Author: Federico Cañellas
-# Email: federico.leandro.c@gmail.com
+# Author: Francisca Cañellas
+# Email: francisca.leonor.alejandra.c@gmail.com
 # Date: 17-08-2019
 # Version: 0.1
 
