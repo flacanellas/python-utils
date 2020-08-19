@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# Author:  Federico Cañellas
-# Email:   federico.leandro.c@gmail.com
+# Author:  Francisca Cañellas
+# Email:   francisca.leonor.alejandra.c@gmail.com
 # Date:    16-08-2019
 # Version: 0.1
 # Purpose: Utilities for work in command line
